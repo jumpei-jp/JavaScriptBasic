@@ -10,4 +10,24 @@ async function callApi() {
   console.log(users);
 }
 
+// post情報を取得する関数
+const getPosts = async () => {
+  // 非同期処理が完了してreturnが実行されるまで次の処理に進まない
+  const json = await fetch("https://jsonplaceholder.typicode.com/posts")
+    // 成功を返す
+    .then((res) => {
+      console.log("get posts success!");
+      return res.json();
+    })
+    // 失敗を返す
+    .catch((error) => {
+      console.log(error);
+      return null;
+    });
+
+  // 結果を返す
+  console.log(json);
+};
+
 callApi();
+getPosts();
